@@ -8,9 +8,32 @@
 			/* check http://www.w3schools.com/cssref/css_websafe_fonts.asp */
 			font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 			font-size: 13px;
+			line-height: 16px;
 			max-width: 1000px;
 			margin: auto;
 		}
+		h1 {
+			margin-left: 2em;
+		}
+		h3 {
+			font-size: 24px;
+			text-transform: uppercase;
+			color: #CCC;
+			margin: 0;
+			padding: 0;
+			transform: rotate(90deg);
+			transform-origin: left top;
+			position: absolute;
+			left: 1em;
+		}
+		h3 > span {
+			display: inline-block;
+			transform: rotate(-180deg);
+		}
+		h4 {margin: 0 0 3px 0;}
+		h4 > span {font-weight: normal;}
+		ul + h4 {margin-top: 1em;}
+		ul {margin: 3px 0;}
 		div.photo {
 			width: 180px;
 			height: 240px;
@@ -21,30 +44,58 @@
 			float: right;
 			margin: 0 0 1em 1em;
 		}
-		div.about {
-			padding: 0.5em 0;
+		section {
+			position: relative;
+			padding: 0.5em 0 0.5em 4em;
 			border-style: dashed none;
 			border-color: #CCC;
 			border-width: 1px;
 		}
-		.about a {
+		section > p {
+			margin: 0;
+		}
+		section > p + dl, section > dl + dl.sentense {
+			margin-top: 0.5em;
+		}
+		section a {
 			color: black;
 			text-decoration: none;
 		}
-		.about:hover a {
+		section dl:hover a {
 			color: blue;
 			text-decoration: underline;
 		}
-		.about a:hover, about a:active {
+		section dd {
+			margin-left: 3em;
+		}
+		section a:hover, section a:active {
 			color: red;
 			text-decoration: underline;
 		}
-		.about > dl {
+		section > dl {
 			margin: 0;
 		}
-
-		.about dt {
+		section dt {
 			color: #999;
+		}
+		.strong {
+			font-weight: bold;
+		}
+		dl.sentense > dt {
+			font-weight: bold;
+		}
+		dl.sentense > dt::after {
+			content: ":";
+		}
+		dl.sentense > dd {
+			margin-left: 2em;
+		}
+		dl.sentense.sparse > dd {
+			line-height: 150%;
+		}
+		dl.sentense > dd::before {
+			content: "• ";
+			font-weight: normal;
 		}
 	</style>
 </head>
@@ -52,47 +103,297 @@
 
 <h1>Artem Skoretskiy, CV</h1>
 
-<div class="about">
+<section>
+	<h3><span>Baseline</span></h3>
 
-<div class="photo">PHOTO</div>
+	<div class="photo">PHOTO</div>
 
-<dl>
-	<dt>Keywords</dt>
-	<dd>Web, Python, Django, SQL, Docker, Debian, Ubuntu, OSX, bash, AWS S3, AWS S3, AWS CloudFront, build, ffmpeg</dd>
+	<dl>
+		<dt>Keywords</dt>
+		<dd>Web, Python, Django, SQL, Docker, Debian, Ubuntu, OSX, bash, AWS S3, AWS S3, AWS CloudFront, build, ffmpeg</dd>
 
-	<dt>Language</dt>
-	<dd>English (fluent, IELTS 6.5)</dd>
-	<dd>Deutsch (intermediate, B2.1)</dd>
-	<dd>Russian (native)</dd>
+		<dt>Language</dt>
+		<dd>English (fluent, IELTS 6.5)</dd>
+		<dd>Deutsch (intermediate, B2.1)</dd>
+		<dd>Russian (native)</dd>
 
-	<dt>Location</dt>
-	<dd>Köln, Germany (relocation considered)</dd>
+		<dt>Location</dt>
+		<dd>Köln, Germany (relocation considered)</dd>
 
-	<dt>Work Permit</dt>
-	<dd>Residence permit for Germany (Niederlassungserlaubnis)</dd>
+		<dt>Work Permit</dt>
+		<dd>Residence permit for Germany (Niederlassungserlaubnis)</dd>
+	</dl>
+	<dl>
+		<dt>Contacts</dt>
+		<dd>phone: <a href="tel:+4915783540848">+49 157 835 40 848</a></dd>
+		<dd>email: <a href="mailto:artem.skoretskiy@gmail.com">artem.skoretskiy@gmail.com</a></dd>
+		<dd>skype: <a href="skype:tonn81?call">tonn81</a></dd>
+		<dd>github: <a href="https://github.com/askoretskiy/">askoretskiy</a></dd>
+		<dd>twitter: <a href="http://twitter.com/askoretskiy">@askoretskiy</a></dd>
+	</dl>
+	<dl>
+		<dt>Positions taken</dt>
+		<dd class="strong">Web [software] developer</dd>
+		<dd>Senior developer</dd>
+		<dd>Technical lead</dd>
+		<dd>Team lead</dd>
+		<dd>Business analyst</dd>
 
-	<dt>Contacts</dt>
-	<dd><a href="tel:+4915783540848">+49(0) 157 835 40 848</a></dd>
-	<dd><a href="mailto:artem.skoretskiy@gmail.com">artem.skoretskiy@gmail.com</a></dd>
-	<dd>skype: <a href="skype:tonn81?call">tonn81</a></dd>
-	<dd>github: <a href="https://github.com/askoretskiy/">askoretskiy</a></dd>
-	<dd>twitter: <a href="http://twitter.com/askoretskiy">@askoretskiy</a></dd>
+		<dt>Milestones</dt>
+		<dd>2012 — moved to Germany</dd>
+		<dd>2005 — first abroad customer (USA)</dd>
+		<dd>2004 — graduated as Master of Economy</dd>
+		<dd>2000 — first IT job</dd>
+		<dd>1998 — frist web app</dd>
+	</dl>
+</section>
 
-	<dt>Positions taken</dt>
-	<dd>Web [software] developer</dd>
-	<dd>Senior developer</dd>
-	<dd>Technical lead</dd>
-	<dd>Team lead</dd>
-	<dd>Business analyst</dd>
+<section>
+	<h3><span>About</span></h3>
 
-	<dt>Milestones</dt>
-	<dd>2012 — moved to Germany, work in office</dd>
-	<dd>2005 — became freelancer, work for western company</dd>
-	<dd>2004 — graduated as Master of Economy</dd>
-	<dd>2000 — first IT job</dd>
-	<dd>1998 — frist web app</dd>
-</dl>
-</div>
+	<p>My passion is about full cycle of <span class="strong">web applications development</span> — from idea to running application [on production server].</p>
+
+	<dl class="sentense sparse">
+		<dt>I love to</dt>
+		<dd>Analyse business processes, data- and workflows, suggest improvements</dd>
+		<dd>Design product features and user experience</dd>
+		<dd>Design architecture and structure of application, evaluate data storage options and design data structures</dd>
+		<dd class="strong">Develop web applications using Python and Django</dd>
+		<dd>Add extra logic to client using JavaScript</dd>
+		<dd>Pack application into [set of] Docker containers, use them for development and testing</dd>
+		<dd>Integrate with AWS S3, AWS EC2, AWS CloudFront</dd>
+		<dd>Tune Python / Django and SQL code performance for specific workloads</dd>
+		<dd>Use Debian for servers, OSX and Ubuntu for desktop</dd>
+		<dd>Deploy to production using automated deployment tools</dd>
+		<dd>Use OSS projects and contribute to them (at least bug reports or feature requests, e.g. Firefox, Django, Tastypie, Python)</dd>
+	</dl>
+</section>
+
+<section>
+	<h3><span>Today</span></h3>
+
+	<dl class="sentense">
+		<dt>I build products using</dt>
+		<dd>Docker, private docker registry, Docker-compose</dd>
+		<dd class="strong">Python, Django</dd>
+		<dd class="strong">SQL; PostgreSQL, MySQL, SQLite</dd>
+		<dd>JavaScript (no framework), prototype inheritance, HTML5 upload, files handling</dd>
+		<dd>HTML5, CSS3 (baseline)</dd>
+		<dd>flotcharts</dd>
+		<dd>HTML5 native player, JWPlayer, video.js, DASH player</dd>
+		<dd>Boto, AWS CLI, packer.io, AWS S3, AWS CloudFront, AWS EC2, scaling</dd>
+		<dd>Fabric, bash, ssh</dd>
+		<dd>Pillow</dd>
+		<dd>ffmpeg, x264, x265</dd>
+		<dd>tox, unittest, Selenium with Firefox / PhantomJS</dd>
+		<dd>Tastypie</dd>
+		<dd>Celery, RabbitMQ</dd>
+		<dd>HTTP; curl, wget, aria, awscli</dd>
+		<dd>Regular expressions</dd>
+		<dd>GitLab, GitLab CI, GitHub, Jenkins, Jira, Confluence</dd>
+		<dd>git, hg, ssh, terminal, bash, check install, build chain</dd>
+		<dd>Nginx (SSL+HTTP 2, download acceleration), uwsgi, supervisord, systemd</dd>
+		<dd>Memcached, Redis</dd>
+		<dd>Debian, Ubuntu, OSX</dd>
+		<dd>PyCharm, Sublime, Geany</dd>
+	</dl>
+
+	<dl class="sentense">
+		<dt>I'm typically busy with</dt>
+		<dd>Estimating, generating tasks / features from expression of needs, discussing with customer, planning projects</dd>
+		<dd>Designing architecture, app- and data structure, data storage</dd>
+		<dd class="strong">Developing new features inside docker containers</dd>
+		<dd>Porting to latest Django version inside container</dd>
+		<dd>Updating testing framework (tox), adding multi-version testing, added Gitlab CI integration, Selenium, PhantomJS</dd>
+		<dd>Packing app into Docker container(s)</dd>
+		<dd>Developing [no-downtime] deployment scripts (Fabric, supervisord, systemd, virtualenv, uwsgi) and helpers (bash, ssh)</dd>
+		<dd>Extracting long-running / non-blocking code into Celery task</dd>
+	</dl>
+
+	<dl class="sentense">
+		<dt>I'm in context of</dt>
+		<dd>Film events: metadata submission, video upload, selection, offline library, web kiosks</dd>
+		<dd>Videotheque (VOD-like): video processing, video streaming, video playout, video secure delivery</dd>
+		<dd>Multi-tenant web applications</dd>
+		<dd>Multi-lingual support</dd>
+	</dl>
+</section>
+
+<section>
+	<h3><span>Tomorrow</span></h3>
+
+	<dl class="sentense">
+		<dt>I am looking forward to use [in production]</dt>
+		<dd>Deploy containers to production</dd>
+		<dd>Micro service architecture</dd>
+		<dd class="strong">Django REST framework</dd>
+		<dd class="strong">Python 3</dd>
+		<dd class="strong">Async Python applications and web frameworks (async, asyncio, aiohttp)</dd>
+		<dd>Lightweight Python web frameworks (Flask, web.py)</dd>
+		<dd class="strong">SPA (single page applications), JavaScript MVC / MVVC frameworks (react js, angular, backbone)</dd>
+		<dd class="strong">JavaScript advanced (promises, ES7, transpilers, package managers / dependency loaders, processing, polyfills, minification, source maps)</dd>
+		<dd class="strong">CSS advanced (CSS3, package manager, CSS reset, CSS frameworks, CSS processing, polyfills, minification, responsive design)</dd>
+		<dd>HTML5 advanced (semantic web, new tags and attributes, micro formats)</dd>
+		<dd>Websockets</dd>
+		<dd>HTML5 canvas</dd>
+		<dd>TDD, BDD</dd>
+		<dd>AWS ElasticTranscoder, AWS lambda, AWS SQS, AWS MQ, AWS containers</dd>
+		<dd>NoSQL (for specific needs)</dd>
+		<dd>Full-text search: Django haystack, Solr, ElasticSearch</dd>
+		<dd>Message-oriented architecture, Django Channels</dd>
+		<dd>Mobile hybrid apps (PhoneGap / Cordova, react native)</dd>
+		<dd>Python debugger</dd>
+		<dd>JavaScript debugger</dd>
+		<dd>OpenCV, face and content recognition, machine learning</dd>
+		<dd>MPEG DASH, DRM (CDM)</dd>
+		<dd>pytest / nose</dd>
+		<dd>AWS containers, AWS auto-scaling</dd>
+		<dd>High availability deployments</dd>
+		<dd>Docker swarm</dd>
+		<dd>Time series storage and visualization (grafana, influxdb, graphite)</dd>
+		<dd>Logging (sentry)</dd>
+		<dd>Django Pluggable apps</dd>
+		<dd>Scalable apps</dd>
+		<dd>Pika (simple RabbitMQ client)</dd>
+		<dd>Invoke</dd>
+		<dd>Genuine DevOps</dd>
+		<dd>oAuth integration</dd>
+		<dd>Graphs with javascript: D3.js</dd>
+		<dd>ARM boards, Debian on ARM64</dd>
+	</dl>
+
+	<dl class="sentense">
+		<dt>I am impressed by progress in areas of</dt>
+		<dd>VR / AR</dd>
+		<dd>Machine learning, content recognition</dd>
+		<dd>Content search, &quot;enrichment&quot;</dd>
+		<dd>Drones / autopilots</dd>
+	</dl>
+</section>
+
+<section>
+	<h3><span>Yesterday</span></h3>
+
+	<dl class="sentense">
+		<dt>I was builing products with</dt>
+		<dd>PL/SQL, Oracle SQL</dd>
+		<dd>T-SQL, MS SQL</dd>
+		<dd>Ruby on Rails, gems</dd>
+		<dd>CouchDB</dd>
+		<dd>node.js</dd>
+		<dd>C#, ASP.NET</dd>
+		<dd>ASP, JScript </dd>
+		<dd>PHP (own framework)</dd>
+		<dd>Elgg platform</dd>
+		<dd>Services integration (Ooyala, Facebook, Twitter, Google Maps, Akamai, Payment gateways)</dd>
+		<dd>EXIF parsing in JavaScript</dd>
+		<dd>Apache</dd>
+		<dd>ZFS, RAID (mdm)</dd>
+		<dd>XMPP / Jabber</dd>
+		<dd>Web crawling / scraping</dd>
+		<dd>Sybase</dd>
+		<dd>Redmine, Trac, Bugzilla</dd>
+		<dd>SQL alchemy</dd>
+		<dd>OpenStack</dd>
+	</dl>
+
+	<dl class="sentense">
+		<dt>I was deep in context of</dt>
+		<dd>Groupon-like applications</dd>
+		<dd>Web chats</dd>
+		<dd>Web app origin verification (that official client is used)</dd>
+		<dd>Payment systems</dd>
+		<dd>Credit reports</dd>
+		<dd>Web crawling / scraping</dd>
+		<dd>Browser fingerprint</dd>
+		<dd>Accounting</dd>
+		<dd>Online learning</dd>
+	</dl>
+</section>
+
+<section>
+	<h3><span>Recent projects</span></h3>
+
+	<h4>DblExplorer<span>, 2016 — now </span></h4>
+	<p>Catalog of engines, advanced search Python + Django, PostgreSQL</p>
+	<ul>
+	<li>Estimated, planned project</li>
+	<li>Developing extra features for existing app</li>
+	</ul>
+
+	<h4>PicturePipe<span>, 2012 — now</span></h4>
+	<p> Platform for VoD products Python + Django, Javascript, eventually ActionScript and Java (Applet)</p>
+	<ul>
+		<li>Estimated and designed new features, their architecture</li>
+		<li>Implemented new features (IP to location, browser and device recognition, metalink, payments w/PayPal, mass downloader, callbacks system, metadata search, multi-language fields, submission form, JWPlayer 6 and HTML5 playout, HTML5 upload to S3, many new APIs via TastyPie)</li>
+		<li>Upgraded frameworks (Django, tastypie, testing; patched Django against crashes)</li>
+		<li>Implemented several prototypes (AWS S3 files ownership and cleanup, h265 playout, playout from different CDNs, Akamai transcoding + authorised DASH playout, Django REST Framework + fat client, jsstats gathering + reports + dashboard)</li>
+		<li>Optimised performance (better uwsgi usage, faster pages and APIs — SQL + Python, faster tests)</li>
+		<li>Updated related products (bugs Uploader @ Java, bugs in JWPlayer5 @ SWF ActionScript, custom overlay for JWPlayer6 @ SWF ActionScript)</li>
+		<li>Migrated from Piston to Tastypie</li>
+	</ul>
+
+	<h4>PicturePipe Encoder<span>, 2012 — now </span></h4>
+	<p>Video transcoding backend for PicturePipe AWS EC2, Python, Celery + RabbitMQ, ffmpeg, DVD tools, boto + AWS S3, awscli + AWS S3</p>
+	<ul>
+		<li>Re-designed and implemented new usage scenario (AWS EC2 + systemd + Docker + Celery@RabbitMQ + Python, packer.io)</li>
+		<li>Implemented workers check and automatic re-scaling (AWS EC2)</li>
+		<li>Upgraded core libraries (ffmbc => ffmpeg, ffprobe for metadata, migrated to latest ffmpeg)</li>
+		<li>Built core libraries ourselves (ffmpeg, x264, open264, x265, vpx, faac, FDK; make, configure, checkinstall; static linking)</li>
+		<li>Optimised performance and storage requirements (awscli for upload and download, extract metadata from remote files, celery + RabbitMQ, task cancelling, avoid download if possible, direct transfer from bucket to bucket, delete originals on success)</li>
+		<li>Improved application (files hashing, single log for encoding task, better binaries execution, metadata extraction, thumbnail generation, precise progress calculation, better ffmpeg log parsing for progress, moved much logic and settings to publisher)</li>
+		<li>Developed new features (DCP recognition + thumbnail / metadata extraction, new codecs, download source from external URL - wget/curl/aria2c/axel + asymmetric credentials encryption)</li>
+		<li>Fixed bugs (better overlays, support unicode)</li>
+	</ul>
+
+	<h4>Prequel<span>, 2012 — now </span></h4>
+	<p>Videotheque + submission platform Python + Django</p>
+	<ul>
+		<li>Designed product and architecture (Django, thin client for PicturePipe, persistent data caching in Redis)</li>
+		<li>Designed and implemented multi-tenant app (YAML config tree, override settings, themes inheritance, settings per event, placeholders)</li>
+		<li>Developed many core features (total 2 devs, data mapping, data sync, metadata search, also inside JSON, Ooyala and NOVA integration, geo-blocking, reports generation, voting)</li>
+	</ul>
+
+	<h4>Client PC<span>, 2013 — now </span></h4>
+	<p>Client PC machine to work with event videotheque</p>
+	<ul>
+		<li>Made web kiosk machine (Firefox / Chrome, Ubuntu, custom session, tearing-free, windows decoration, dd)</li>
+	</ul>
+
+	<h4>Salt and Pepper<span>, 2016 </span></h4>
+	<p>Web application for events management Python + Django, PostgreSQL</p>
+	<ul>
+		<li>Upgraded (Django, testing)</li>
+	</ul>
+
+	<h4>BüroVerhaltung<span>, 2016</span></h4>
+	<p> Web application for managing shared office tasks Python + Django</p>
+	<ul>
+		<li>Upgraded (Python 3, Django, testing)</li>
+		<li>Reviewed, cleaned up the code</li>
+	</ul>
+
+	<h4>Opera Leipzig<span>, 2016 </span></h4>
+	<p>Videotheque for opera Python + Django, boto3 + AWS S3 (+ events + uploader), AWS ElasticTranscode, AWS Lambda, AWS SQS</p>
+	<ul>
+		<li>Estimated, designed product and architecture (Python, AWS S3 + events + SQS + ElasticTranscode)</li>
+		<li>Created skeleton application + structure, data models</li>
+	</ul>
+
+	<h4>gSales connector<span>, 2015</span></h4>
+	<p> Web application to generate invoices out of Jira logged hours Python + Flask, Jira XML RPC, TEMPO XML RPC, gSales API</p>
+	<ul>
+		<li>Fixed bugs, updated and extended existing app (UI and features)</li>
+	</ul>
+
+	<h4>App Archive<span>, 2014 — 2015 </span></h4>
+	<p>Portfolio of actual implemented web applications Python + Django, Docker, different apps inside containers</p>
+	<ul>
+		<li>Designed product and architecture (dashboard + multiple containers)</li>
+		<li>Created core application (dashboard, single entry point, links)</li>
+		<li>Packed several apps, designed storage structure (code, data, settings)</li>
+	</ul>
+</section>
 
 </body>
 </html>
