@@ -30,7 +30,10 @@
 			display: inline-block;
 			transform: rotate(-180deg);
 		}
-		h4 {margin: 0 0 3px 0;}
+		h4 {
+			margin: 0 0 3px 0;
+			font-size: 16px;
+		}
 		h4 > span {font-weight: normal;}
 		ul + h4 {margin-top: 1em;}
 		ul {margin: 3px 0;}
@@ -96,6 +99,17 @@
 		dl.sentense > dd::before {
 			content: "• ";
 			font-weight: normal;
+		}
+		p.description {
+			color: #999;
+			line-height: 20px;
+		}
+		p.technologies, li.technologies {
+			font-weight: bold;
+		}
+
+		p.technologies, li.technologies, dl.technologies dd {
+			font-family: "Lucida Console", Monaco, monospace;
 		}
 	</style>
 </head>
@@ -168,7 +182,7 @@
 <section>
 	<h3><span>Today</span></h3>
 
-	<dl class="sentense">
+	<dl class="sentense technologies">
 		<dt>I build products using</dt>
 		<dd>Docker, private docker registry, Docker-compose</dd>
 		<dd class="strong">Python, Django</dd>
@@ -270,7 +284,7 @@
 <section>
 	<h3><span>Yesterday</span></h3>
 
-	<dl class="sentense">
+	<dl class="sentense technologies">
 		<dt>I was builing products with</dt>
 		<dd>PL/SQL, Oracle SQL</dd>
 		<dd>T-SQL, MS SQL</dd>
@@ -311,14 +325,16 @@
 	<h3><span>Current projects</span></h3>
 
 	<h4>DblExplorer<span>, 2016 — now </span></h4>
-	<p>Catalog of engines, advanced search Python + Django, PostgreSQL</p>
+	<p class="description">Catalog of engines, advanced search </p>
+	<p class="technologies">Python + Django, PostgreSQL</p>
 	<ul>
 	<li>Estimated, planned project</li>
 	<li>Developing extra features for existing app</li>
 	</ul>
 
 	<h4>PicturePipe<span>, 2012 — now</span></h4>
-	<p> Platform for VoD products Python + Django, Javascript, eventually ActionScript and Java (Applet)</p>
+	<p class="description"> Platform for VoD products </p>
+	<p class="technologies">Python + Django, Javascript, eventually ActionScript and Java (Applet)</p>
 	<ul>
 		<li>Estimated and designed new features, their architecture</li>
 		<li>Implemented new features (IP to location, browser and device recognition, metalink, payments w/PayPal, mass downloader, callbacks system, metadata search, multi-language fields, submission form, JWPlayer 6 and HTML5 playout, HTML5 upload to S3, many new APIs via TastyPie)</li>
@@ -330,7 +346,8 @@
 	</ul>
 
 	<h4>PicturePipe Encoder<span>, 2012 — now </span></h4>
-	<p>Video transcoding backend for PicturePipe AWS EC2, Python, Celery + RabbitMQ, ffmpeg, DVD tools, boto + AWS S3, awscli + AWS S3</p>
+	<p class="description">Video transcoding backend for PicturePipe </p>
+	<p class="technologies">AWS EC2, Python, Celery + RabbitMQ, ffmpeg, DVD tools, boto + AWS S3, awscli + AWS S3</p>
 	<ul>
 		<li>Re-designed and implemented new usage scenario (AWS EC2 + systemd + Docker + Celery@RabbitMQ + Python, packer.io)</li>
 		<li>Implemented workers check and automatic re-scaling (AWS EC2)</li>
@@ -343,7 +360,8 @@
 	</ul>
 
 	<h4>Prequel<span>, 2012 — now </span></h4>
-	<p>Videotheque + submission platform Python + Django</p>
+	<p class="description">Videotheque + submission platform </p>
+	<p class="technologies">Python + Django</p>
 	<ul>
 		<li>Designed product and architecture (Django, thin client for PicturePipe, persistent data caching in Redis)</li>
 		<li>Designed and implemented multi-tenant app (YAML config tree, override settings, themes inheritance, settings per event, placeholders)</li>
@@ -351,7 +369,7 @@
 	</ul>
 
 	<h4>Client PC<span>, 2013 — now </span></h4>
-	<p>Client PC machine to work with event videotheque</p>
+	<p class="description">Client PC machine to work with event videotheque</p>
 	<ul>
 		<li>Made web kiosk machine (Firefox / Chrome, Ubuntu, custom session, tearing-free, windows decoration, dd)</li>
 	</ul>
@@ -361,33 +379,38 @@
 	<h3><span>Recent projects</span></h3>
 
 	<h4>Salt and Pepper<span>, 2016 </span></h4>
-	<p>Web application for events management Python + Django, PostgreSQL</p>
+	<p class="description">Web application for events management </p>
+	<p class="technologies">Python + Django, PostgreSQL</p>
 	<ul>
 		<li>Upgraded (Django, testing)</li>
 	</ul>
 
 	<h4>BüroVerhaltung<span>, 2016</span></h4>
-	<p> Web application for managing shared office tasks Python + Django</p>
+	<p class="description"> Web application for managing shared office tasks </p>
+	<p class="technologies">Python + Django</p>
 	<ul>
 		<li>Upgraded (Python 3, Django, testing)</li>
 		<li>Reviewed, cleaned up the code</li>
 	</ul>
 
 	<h4>Opera Leipzig<span>, 2016 </span></h4>
-	<p>Videotheque for opera Python + Django, boto3 + AWS S3 (+ events + uploader), AWS ElasticTranscode, AWS Lambda, AWS SQS</p>
+	<p class="description">Videotheque for opera </p>
+	<p class="technologies">Python + Django, boto3 + AWS S3 (+ events + uploader), AWS ElasticTranscode, AWS Lambda, AWS SQS</p>
 	<ul>
 		<li>Estimated, designed product and architecture (Python, AWS S3 + events + SQS + ElasticTranscode)</li>
 		<li>Created skeleton application + structure, data models</li>
 	</ul>
 
 	<h4>gSales connector<span>, 2015</span></h4>
-	<p> Web application to generate invoices out of Jira logged hours Python + Flask, Jira XML RPC, TEMPO XML RPC, gSales API</p>
+	<p class="description"> Web application to generate invoices out of Jira logged hours </p>
+	<p class="technologies">Python + Flask, Jira XML RPC, TEMPO XML RPC, gSales API</p>
 	<ul>
 		<li>Fixed bugs, updated and extended existing app (UI and features)</li>
 	</ul>
 
 	<h4>App Archive<span>, 2014 — 2015 </span></h4>
-	<p>Portfolio of actual implemented web applications Python + Django, Docker, different apps inside containers</p>
+	<p class="description">Portfolio of actual implemented web applications </p>
+	<p class="technologies">Python + Django, Docker, different apps inside containers</p>
 	<ul>
 		<li>Designed product and architecture (dashboard + multiple containers)</li>
 		<li>Created core application (dashboard, single entry point, links)</li>
@@ -398,32 +421,32 @@
 <section>
 	<h3><span>Past projects</span></h3>
 
-	<h4>Starmeo<span>, 2011 — 2012 </span></h4>
-	<p>Web application for stars to communicate with their fans </p>
+	<h4 class="description">Starmeo<span>, 2011 — 2012 </span></h4>
+	<p class="description">Web application for stars to communicate with their fans </p>
+	<p class="technologies">Python + Django, Javascript (UI tricks), MySQL, boto + AWS S3, Facebook Integration, ffmpeg</p>
 	<ul>
 		<li>Automated deployments, video processing, reduce page size and load time, cloud storage integration, notifications subsystem </li>
-		<li>Python + Django, Javascript (UI tricks), MySQL, boto + AWS S3, Facebook Integration, ffmpeg</li>
 	</ul>
 
 	<h4>Syndicate<span>,  2011</span></h4>
-	<p>Web application for managing marketing campaigns </p>
+	<p class="description">Web application for managing marketing campaigns </p>
+	<p class="technologies">Javascript (fat client), node.js (permissions proxy), CouchDB; Python + Django, MySQL</p>
 	<ul>
 		<li>Fat client concept, NoSQL storage, server-side Javascript </li>
-		<li>Javascript (fat client), node.js (permissions proxy), CouchDB; Python + Django, MySQL</li>
 	</ul>
 
 	<h4>DeinDeal<span>,  2010 — 2011 </span></h4>
-	<p>Analogue of Groupon </p>
+	<p class="description">Analogue of Groupon </p>
+	<p class="technologies">Python + Django, MySQL, Celery + RabbitMQ, Fabric</p>
 	<ul>
 		<li>Race conditions, payments, intense load, performance optimizations </li>
-		<li>Python + Django, MySQL, Celery + RabbitMQ, Fabric</li>
 	</ul>
 
 	<h4>Twangoo<span>,  2010</span></h4>
-	<p>Analogue of Groupon </p>
+	<p class="description">Analogue of Groupon </p>
+	<p class="technologies">Python + Django, Celery + RabbitMQ, memcached, nginx + uwsgi, YAML, Fabric</p>
 	<ul>
 		<li>Develop from scratch, deploying Django, multi-tenant application, race conditions, payments, automated deployments </li>
-		<li>Python + Django, Celery + RabbitMQ, memcached, nginx + uwsgi, YAML, Fabric</li>
 	</ul>
 </section>
 
