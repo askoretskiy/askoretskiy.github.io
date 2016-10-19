@@ -105,13 +105,167 @@
 			color: #999;
 			line-height: 20px;
 		}
-		p.technologies, li.technologies {
+
+		span.technology.selected {
+			background-color: #F00;
+			border-color: #C00;
+			color: white;
 		}
 
-		p.technologies, li.technologies, dl.technologies dd {
+		span.technology {
+			border: solid 1px #DDD;
+			padding: 0 3px;
+			background-color: #F0F0F0;
+			font-weight: normal;
+			color: black;
+			cursor: pointer;
 			font-family: "Lucida Console", Monaco, monospace;
+			font-size: 12px;
 		}
 	</style>
+	<script type="application/javascript">
+
+	var keywords = `
+Python 3
+Python
+Django REST Framework
+Django Channels
+Django
+Celery
+MySQL
+SQLite
+MySQL
+PostgreSQL
+Canvas
+HTML5
+Flask
+web.py
+VIDEO tag
+Docker-compose
+docker registry
+Docker
+AES
+Debian
+Ubuntu
+bash
+Java Applet
+Java
+AWS S3
+AWS CloudFront
+ActionScript
+AWS EC2
+AWS SQS
+AWS MQ
+AWS Containers
+make
+node.js
+CouchDB
+YAML
+ffmpeg
+Firefox
+Chrome
+RabbitMQ
+Redis
+SSL
+uwsgi
+virtualenv
+Gitlab CI
+GitHub
+Jenkins
+Jira
+Confluence
+Boto
+AWS CLI
+packer.io
+awscli
+x264
+x265
+openh264
+DASH player
+HTTP2
+supervisord
+Websockets
+systemd
+PyCharm
+AWS ElasticTranscode
+AWS Lambda
+Sublime
+Geany
+Fabric
+Invoke
+Regular expressions
+GitLab
+Memcached
+HTTP
+nginx
+Nginx
+curl
+axel
+aria2c
+wget
+Django Haystack
+Solr
+ElasticSearch
+Tastypie
+Piston
+Javascript
+SQL
+CSS3
+CSS
+HTML
+ssh
+hg
+git
+JWPlayer 5
+JWPlayer 6
+JWPlayer
+video.js
+PhantomJS
+flotcharts
+Pillow
+unittest
+Selenium
+checkinstall
+configure
+terminal
+tox
+OSX
+	`;
+
+	function slugify(text) {
+		return text.toLowerCase().replace(/[^a-z0-9]/g, '-');
+	}
+
+	function add_class(nodes, classname) {
+		for(let node of nodes) {
+			node.classList.add(classname);
+		}
+	}
+
+	function remove_class(nodes, classname) {
+		for(let node of nodes) {
+			node.classList.remove(classname);
+		}
+	}
+
+	var keywords = keywords.replace(/^\s+|\s+$/g, '').split('\n');
+	var regexp = RegExp('\\b('+keywords.join('|')+')\\b'.toLowerCase(), 'g');
+
+	document.addEventListener('DOMContentLoaded', function(){
+		document.body.innerHTML = document.body.innerHTML.replace(regexp, function(m, word){
+			return '<span class="technology tech-'+slugify(word)+'">'+word+'</span>';
+		});
+
+		for(let node of document.querySelectorAll('span.technology')) {
+			node.addEventListener('mouseover', function(ev){
+				add_class(document.querySelectorAll('.technology.tech-'+slugify(this.innerText)), 'selected');
+			}, false);
+			node.addEventListener('mouseout', function(ev){
+				remove_class(document.querySelectorAll('.technology.selected'), 'selected');
+			}, false);
+		}
+	}, false);
+	</script>
 </head>
 <body>
 
@@ -124,7 +278,7 @@
 
 	<dl>
 		<dt>Keywords</dt>
-		<dd>Web, Python, Django, SQL, Docker, Debian, Ubuntu, OSX, bash, AWS S3, AWS S3, AWS CloudFront, build, ffmpeg</dd>
+		<dd>Web, Python, Django, SQL, Docker, Debian, Ubuntu, OSX, bash, AWS S3, AWS S3, AWS CloudFront, make, ffmpeg</dd>
 
 		<dt>Language</dt>
 		<dd>English (fluent, IELTS 6.5)</dd>
@@ -169,7 +323,7 @@
 		<dd>Design product features and user experience</dd>
 		<dd>Design architecture and structure of application, evaluate data storage options and design data structures</dd>
 		<dd class="strong">Develop web applications using Python and Django</dd>
-		<dd>Add extra logic to client using JavaScript</dd>
+		<dd>Add extra logic to client using Javascript</dd>
 		<dd>Pack application into [set of] Docker containers, use them for development and testing</dd>
 		<dd>Integrate with AWS S3, AWS EC2, AWS CloudFront</dd>
 		<dd>Tune Python / Django and SQL code performance for specific workloads</dd>
@@ -187,10 +341,10 @@
 		<dd>Docker, private docker registry, Docker-compose</dd>
 		<dd class="strong">Python, Django</dd>
 		<dd class="strong">SQL; PostgreSQL, MySQL, SQLite</dd>
-		<dd>JavaScript (no framework), prototype inheritance, HTML5 upload, files handling</dd>
+		<dd>Javascript (no framework), prototype inheritance, HTML5 upload, files handling</dd>
 		<dd>HTML5, CSS3 (baseline)</dd>
 		<dd>flotcharts</dd>
-		<dd>HTML5 native player, JWPlayer, video.js, DASH player</dd>
+		<dd>HTML5 VIDEO tag, JWPlayer, video.js, DASH player</dd>
 		<dd>Boto, AWS CLI, packer.io, AWS S3, AWS CloudFront, AWS EC2, scaling</dd>
 		<dd>Fabric, bash, ssh</dd>
 		<dd>Pillow</dd>
@@ -198,11 +352,11 @@
 		<dd>tox, unittest, Selenium with Firefox / PhantomJS</dd>
 		<dd>Tastypie</dd>
 		<dd>Celery, RabbitMQ</dd>
-		<dd>HTTP; curl, wget, aria, awscli</dd>
+		<dd>HTTP; curl, wget, aria2c, awscli</dd>
 		<dd>Regular expressions</dd>
 		<dd>GitLab, GitLab CI, GitHub, Jenkins, Jira, Confluence</dd>
-		<dd>git, hg, ssh, terminal, bash, check install, build chain</dd>
-		<dd>Nginx (SSL+HTTP 2, download acceleration), uwsgi, supervisord, systemd</dd>
+		<dd>git, hg, ssh, terminal, bash, checkinstall, make</dd>
+		<dd>Nginx (SSL+HTTP2, download acceleration), uwsgi, supervisord, systemd</dd>
 		<dd>Memcached, Redis</dd>
 		<dd>Debian, Ubuntu, OSX</dd>
 		<dd>PyCharm, Sublime, Geany</dd>
@@ -236,24 +390,24 @@
 		<dt>I am looking forward to use [in production]</dt>
 		<dd>Deploy containers to production</dd>
 		<dd>Micro service architecture</dd>
-		<dd class="strong">Django REST framework</dd>
+		<dd class="strong">Django REST Framework</dd>
 		<dd class="strong">Python 3</dd>
 		<dd class="strong">Async Python applications and web frameworks (async, asyncio, aiohttp)</dd>
 		<dd>Lightweight Python web frameworks (Flask, web.py)</dd>
-		<dd class="strong">SPA (single page applications), JavaScript MVC / MVVC frameworks (react js, angular, backbone)</dd>
-		<dd class="strong">JavaScript advanced (promises, ES7, transpilers, package managers / dependency loaders, processing, polyfills, minification, source maps)</dd>
+		<dd class="strong">SPA (single page applications), Javascript MVC / MVVC frameworks (react js, angular, backbone)</dd>
+		<dd class="strong">Javascript advanced (promises, ES7, transpilers, package managers / dependency loaders, processing, polyfills, minification, source maps)</dd>
 		<dd class="strong">CSS advanced (CSS3, package manager, CSS reset, CSS frameworks, CSS processing, polyfills, minification, responsive design)</dd>
 		<dd>HTML5 advanced (semantic web, new tags and attributes, micro formats)</dd>
 		<dd>Websockets</dd>
-		<dd>HTML5 canvas</dd>
+		<dd>HTML5 Canvas</dd>
 		<dd>TDD, BDD</dd>
-		<dd>AWS ElasticTranscoder, AWS lambda, AWS SQS, AWS MQ, AWS containers</dd>
+		<dd>AWS ElasticTranscode, AWS Lambda, AWS SQS, AWS MQ, AWS Containers</dd>
 		<dd>NoSQL (for specific needs)</dd>
-		<dd>Full-text search: Django haystack, Solr, ElasticSearch</dd>
+		<dd>Full-text search: Django Haystack, Solr, ElasticSearch</dd>
 		<dd>Message-oriented architecture, Django Channels</dd>
 		<dd>Mobile hybrid apps (PhoneGap / Cordova, react native)</dd>
 		<dd>Python debugger</dd>
-		<dd>JavaScript debugger</dd>
+		<dd>Javascript debugger</dd>
 		<dd>OpenCV, face and content recognition, machine learning</dd>
 		<dd>MPEG DASH, DRM (CDM)</dd>
 		<dd>pytest / nose</dd>
@@ -268,7 +422,7 @@
 		<dd>Invoke</dd>
 		<dd>Genuine DevOps</dd>
 		<dd>oAuth integration</dd>
-		<dd>Graphs with javascript: D3.js</dd>
+		<dd>Graphs with Javascript: D3.js</dd>
 		<dd>ARM boards, Debian on ARM64</dd>
 	</dl>
 
@@ -296,7 +450,7 @@
 		<dd>PHP (own framework)</dd>
 		<dd>Elgg platform</dd>
 		<dd>Services integration (Ooyala, Facebook, Twitter, Google Maps, Akamai, Payment gateways)</dd>
-		<dd>EXIF parsing in JavaScript</dd>
+		<dd>EXIF parsing in Javascript</dd>
 		<dd>Apache</dd>
 		<dd>ZFS, RAID (mdm)</dd>
 		<dd>XMPP / Jabber</dd>
@@ -334,14 +488,14 @@
 
 	<h4>PicturePipe<span>, 2012 — now</span></h4>
 	<p class="description"> Platform for VoD products </p>
-	<p class="technologies">Python + Django, Javascript, eventually ActionScript and Java (Applet)</p>
+	<p class="technologies">Python + Django, Javascript, eventually ActionScript and Java Applet</p>
 	<ul>
 		<li>Estimated and designed new features, their architecture</li>
 		<li>Implemented new features (IP to location, browser and device recognition, metalink, payments w/PayPal, mass downloader, callbacks system, metadata search, multi-language fields, submission form, JWPlayer 6 and HTML5 playout, HTML5 upload to S3, many new APIs via TastyPie)</li>
 		<li>Upgraded frameworks (Django, tastypie, testing; patched Django against crashes)</li>
 		<li>Implemented several prototypes (AWS S3 files ownership and cleanup, h265 playout, playout from different CDNs, Akamai transcoding + authorised DASH playout, Django REST Framework + fat client, jsstats gathering + reports + dashboard)</li>
 		<li>Optimised performance (better uwsgi usage, faster pages and APIs — SQL + Python, faster tests)</li>
-		<li>Updated related products (bugs Uploader @ Java, bugs in JWPlayer5 @ SWF ActionScript, custom overlay for JWPlayer6 @ SWF ActionScript)</li>
+		<li>Updated related products (bugs Uploader @ Java, bugs in JWPlayer 5 @ SWF ActionScript, custom overlay for JWPlayer 6 @ SWF ActionScript)</li>
 		<li>Migrated from Piston to Tastypie</li>
 	</ul>
 
@@ -352,10 +506,10 @@
 		<li>Re-designed and implemented new usage scenario (AWS EC2 + systemd + Docker + Celery@RabbitMQ + Python, packer.io)</li>
 		<li>Implemented workers check and automatic re-scaling (AWS EC2)</li>
 		<li>Upgraded core libraries (ffmbc => ffmpeg, ffprobe for metadata, migrated to latest ffmpeg)</li>
-		<li>Built core libraries ourselves (ffmpeg, x264, open264, x265, vpx, faac, FDK; make, configure, checkinstall; static linking)</li>
+		<li>Built core libraries ourselves (ffmpeg, x264, openh264, x265, vpx, faac, FDK; make, configure, checkinstall; static linking)</li>
 		<li>Optimised performance and storage requirements (awscli for upload and download, extract metadata from remote files, celery + RabbitMQ, task cancelling, avoid download if possible, direct transfer from bucket to bucket, delete originals on success)</li>
 		<li>Improved application (files hashing, single log for encoding task, better binaries execution, metadata extraction, thumbnail generation, precise progress calculation, better ffmpeg log parsing for progress, moved much logic and settings to publisher)</li>
-		<li>Developed new features (DCP recognition + thumbnail / metadata extraction, new codecs, download source from external URL - wget/curl/aria2c/axel + asymmetric credentials encryption)</li>
+		<li>Developed new features (DCP recognition + thumbnail / metadata extraction, new codecs, download source from external URL - wget/curl/aria2c/axel + AES asymmetric credentials encryption)</li>
 		<li>Fixed bugs (better overlays, support unicode)</li>
 	</ul>
 
@@ -397,7 +551,7 @@
 	<p class="description">Videotheque for opera </p>
 	<p class="technologies">Python + Django, boto3 + AWS S3 (+ events + uploader), AWS ElasticTranscode, AWS Lambda, AWS SQS</p>
 	<ul>
-		<li>Estimated, designed product and architecture (Python, AWS S3 + events + SQS + ElasticTranscode)</li>
+		<li>Estimated, designed product and architecture (Python, AWS S3 + events + AWS SQS + AWS ElasticTranscode)</li>
 		<li>Created skeleton application + structure, data models</li>
 	</ul>
 
