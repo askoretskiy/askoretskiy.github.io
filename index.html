@@ -82,9 +82,23 @@
 		section dt {
 			color: #999;
 		}
-		.strong {
-			font-weight: bold;
+
+        dd.strong {
+            padding-top: 1px;
+            padding-bottom: 1px;
+        }
+
+		span.strong, dd.strong > span {
+            background-color: yellow;
 		}
+
+        span.strong {
+            padding: 0 5px;
+        }
+
+        dd.strong span.technology {
+        }
+
 		dl.sentense > dt {
 			font-weight: bold;
 		}
@@ -92,7 +106,8 @@
 			content: ":";
 		}
 		dl.sentense > dd {
-			margin-left: 2em;
+			margin-left: 1em;
+            padding-left: 1em;
 		}
 		dl.sentense.sparse > dd {
 			line-height: 150%;
@@ -107,15 +122,16 @@
 		}
 
 		span.technology.selected {
-			background-color: #F00;
-			border-color: #C00;
+			background-color: #005fff;
+            border-style: solid;
+			border-color: transparent;
 			color: white;
 		}
 
 		span.technology {
-			border: solid 1px #DDD;
+			border: dashed 1px #DDD;
 			padding: 0 3px;
-			background-color: #F0F0F0;
+            background-color: rgba(0,0,0, 0.05);
 			font-weight: normal;
 			color: black;
 			cursor: pointer;
@@ -126,110 +142,146 @@
 	<script type="application/javascript">
 
 	var keywords = `
-Python 3
-Python
-Django REST Framework
-Django Channels
-Django
-Celery
-MySQL
-SQLite
-MySQL
-PostgreSQL
-Canvas
-HTML5
-Flask
-web.py
-VIDEO tag
-Docker-compose
-docker registry
-Docker
-AES
-Debian
-Ubuntu
-bash
-Java Applet
-Java
-AWS S3
-AWS CloudFront
 ActionScript
-AWS EC2
-AWS SQS
-AWS MQ
-AWS Containers
-make
-node.js
-CouchDB
-YAML
-ffmpeg
-Firefox
-Chrome
-RabbitMQ
-Redis
-SSL
-uwsgi
-virtualenv
-Gitlab CI
-GitHub
-Jenkins
-Jira
-Confluence
-Boto
+AES
+aiohttp
+Alpine
+Apache
+aria2c
+ASP
+ASP.NET
+asyncio
 AWS CLI
-packer.io
 awscli
-x264
-x265
-openh264
-DASH player
-HTTP2
-supervisord
-Websockets
-systemd
-PyCharm
+AWS CloudFront
+AWS Containers
+AWS EC2
 AWS ElasticTranscode
 AWS Lambda
-Sublime
-Geany
-Fabric
-Invoke
-Regular expressions
-GitLab
-Memcached
-HTTP
-nginx
-Nginx
-curl
+AWS MQ
+AWS S3
+AWS SQS
 axel
-aria2c
-wget
-Django Haystack
-Solr
-ElasticSearch
-Tastypie
-Piston
-Javascript
-SQL
-CSS3
+bash
+Boto
+Boto3
+C#
+Canvas
+Celery
+checkinstall
+Chrome
+configure
+Confluence
+Cordova
+CouchDB
 CSS
-HTML
-ssh
-hg
+CSS3
+curl
+D3.js
+DASH player
+Debian
+Django
+Django Channels
+Django Haystack
+Django Haystack
+Django REST Framework
+Docker
+Docker-compose
+docker registry
+Docker Swarm
+ElasticSearch
+ES6
+ES7
+Fabric
+ffmbc
+ffmpeg
+ffprobe
+Firefox
+Flask
+flotcharts
+Geany
 git
+GitHub
+GitLab
+Gitlab CI
+hg
+HTML
+HTML5
+HTTP
+HTTP2
+Invoke
+Java
+Java Applet
+Javascript
+Jenkins
+Jira
+JScript
+JSON
+JWPlayer
 JWPlayer 5
 JWPlayer 6
-JWPlayer
-video.js
+make
+Memcached
+MS SQL
+MySQL
+MySQL
+nginx
+Nginx
+node.js
+nose
+oAuth
+openh264
+OpenStack
+Orace SQL
+OSX
+packer.io
 PhantomJS
-flotcharts
+PhoneGap
+PHP
 Pillow
-unittest
+Piston
+PL/SQL
+PostgreSQL
+PyCharm
+Python
+Python 2
+Python 3
+pytest
+RabbitMQ
+React JS
+React Native
+Redis
+Regular expressions
+Ruby on Rails
 Selenium
-checkinstall
-configure
+Sentry
+Solr
+SQL
+SQL Alchemy
+SQLite
+ssh
+SSL
+Sublime
+supervisord
+SWF
+Sybase
+systemd
+T-SQL
+Tastypie
 terminal
 tox
-OSX
+Ubuntu
+unittest
+uwsgi
+video.js
+VIDEO tag
+virtualenv
+web.py
+Websockets
+wget
+x264
+x265
+YAML
 	`;
 
 	function slugify(text) {
@@ -249,6 +301,8 @@ OSX
 	}
 
 	var keywords = keywords.replace(/^\s+|\s+$/g, '').split('\n');
+	// sort by length
+	keywords.sort(function(a, b){return b.length - a.length;});
 	var regexp = RegExp('\\b('+keywords.join('|')+')\\b'.toLowerCase(), 'g');
 
 	document.addEventListener('DOMContentLoaded', function(){
@@ -278,7 +332,7 @@ OSX
 
 	<dl>
 		<dt>Keywords</dt>
-		<dd>Web, Python, Django, SQL, Docker, Debian, Ubuntu, OSX, bash, AWS S3, AWS S3, AWS CloudFront, make, ffmpeg</dd>
+		<dd>Web, Python, Django, SQL, Docker, Debian, Ubuntu, OSX, bash, AWS S3, AWS S3, AWS CloudFront, build, ffmpeg</dd>
 
 		<dt>Language</dt>
 		<dd>English (fluent, IELTS 6.5)</dd>
@@ -305,7 +359,7 @@ OSX
 
 		<dt>Milestones</dt>
 		<dd>2012 — moved to Germany</dd>
-		<dd>2005 — first abroad customer (USA)</dd>
+		<dd>2005 — first foreign customer (USA)</dd>
 		<dd>2004 — graduated as Master of Economy</dd>
 		<dd>2000 — first IT job</dd>
 		<dd>1998 — frist web app</dd>
@@ -322,12 +376,12 @@ OSX
 		<dd>Analyse business processes, data- and workflows, suggest improvements</dd>
 		<dd>Design product features and user experience</dd>
 		<dd>Design architecture and structure of application, evaluate data storage options and design data structures</dd>
-		<dd class="strong">Develop web applications using Python and Django</dd>
+        <dd class="strong"><span>Develop web applications using Python and Django</span></dd>
 		<dd>Add extra logic to client using Javascript</dd>
 		<dd>Pack application into [set of] Docker containers, use them for development and testing</dd>
 		<dd>Integrate with AWS S3, AWS EC2, AWS CloudFront</dd>
 		<dd>Tune Python / Django and SQL code performance for specific workloads</dd>
-		<dd>Use Debian for servers, OSX and Ubuntu for desktop</dd>
+		<dd>Use Debian / Alpine for containers, Debian for servers, OSX and Ubuntu for desktop</dd>
 		<dd>Deploy to production using automated deployment tools</dd>
 		<dd>Use OSS projects and contribute to them (at least bug reports or feature requests, e.g. Firefox, Django, Tastypie, Python)</dd>
 	</dl>
@@ -339,8 +393,8 @@ OSX
 	<dl class="sentense technologies">
 		<dt>I build products using</dt>
 		<dd>Docker, private docker registry, Docker-compose</dd>
-		<dd class="strong">Python, Django</dd>
-		<dd class="strong">SQL; PostgreSQL, MySQL, SQLite</dd>
+		<dd class="strong"><span>Python 3, Python 2, Django</span></dd>
+		<dd class="strong"><span>SQL, PostgreSQL, MySQL, SQLite RDMBS</span></dd>
 		<dd>Javascript (no framework), prototype inheritance, HTML5 upload, files handling</dd>
 		<dd>HTML5, CSS3 (baseline)</dd>
 		<dd>flotcharts</dd>
@@ -354,7 +408,7 @@ OSX
 		<dd>Celery, RabbitMQ</dd>
 		<dd>HTTP; curl, wget, aria2c, awscli</dd>
 		<dd>Regular expressions</dd>
-		<dd>GitLab, GitLab CI, GitHub, Jenkins, Jira, Confluence</dd>
+		<dd>GitLab, Gitlab CI, GitHub, Jenkins, Jira, Confluence</dd>
 		<dd>git, hg, ssh, terminal, bash, checkinstall, make</dd>
 		<dd>Nginx (SSL+HTTP2, download acceleration), uwsgi, supervisord, systemd</dd>
 		<dd>Memcached, Redis</dd>
@@ -366,10 +420,10 @@ OSX
 		<dt>I'm typically busy with</dt>
 		<dd>Estimating, generating tasks / features from expression of needs, discussing with customer, planning projects</dd>
 		<dd>Designing architecture, app- and data structure, data storage</dd>
-		<dd class="strong">Developing new features inside docker containers</dd>
+        <dd class="strong"><span>Developing new features inside Docker containers</span></dd>
 		<dd>Porting to latest Django version inside container</dd>
 		<dd>Updating testing framework (tox), adding multi-version testing, added Gitlab CI integration, Selenium, PhantomJS</dd>
-		<dd>Packing app into Docker container(s)</dd>
+        <dd class="strong"><span>Packing app into Docker container(s)</span></dd>
 		<dd>Developing [no-downtime] deployment scripts (Fabric, supervisord, systemd, virtualenv, uwsgi) and helpers (bash, ssh)</dd>
 		<dd>Extracting long-running / non-blocking code into Celery task</dd>
 	</dl>
@@ -390,32 +444,30 @@ OSX
 		<dt>I am looking forward to use [in production]</dt>
 		<dd>Deploy containers to production</dd>
 		<dd>Micro service architecture</dd>
-		<dd class="strong">Django REST Framework</dd>
-		<dd class="strong">Python 3</dd>
-		<dd class="strong">Async Python applications and web frameworks (async, asyncio, aiohttp)</dd>
+        <dd class="strong"><span>Django REST Framework</span></dd>
+        <dd class="strong"><span>Async Python applications and web frameworks (asyncio, aiohttp)</span></dd>
 		<dd>Lightweight Python web frameworks (Flask, web.py)</dd>
-		<dd class="strong">SPA (single page applications), Javascript MVC / MVVC frameworks (react js, angular, backbone)</dd>
-		<dd class="strong">Javascript advanced (promises, ES7, transpilers, package managers / dependency loaders, processing, polyfills, minification, source maps)</dd>
-		<dd class="strong">CSS advanced (CSS3, package manager, CSS reset, CSS frameworks, CSS processing, polyfills, minification, responsive design)</dd>
+        <dd class="strong"><span>SPA (single page applications), Javascript MVC / MVVC frameworks (ReactJS, Angular, Backbone)</span></dd>
+        <dd class="strong"><span>Javascript advanced (promises, async, ES6, ES7, transpilers, package managers / dependency loaders, processing, polyfills, minification, source maps)</span></dd>
+        <dd class="strong"><span>CSS advanced (CSS3, package manager, CSS reset, CSS frameworks, CSS processing, polyfills, minification, responsive design)</span></dd>
 		<dd>HTML5 advanced (semantic web, new tags and attributes, micro formats)</dd>
 		<dd>Websockets</dd>
 		<dd>HTML5 Canvas</dd>
 		<dd>TDD, BDD</dd>
-		<dd>AWS ElasticTranscode, AWS Lambda, AWS SQS, AWS MQ, AWS Containers</dd>
+		<dd>AWS ElasticTranscode, AWS Lambda, AWS SQS, AWS MQ, AWS Containers, AWS auto-scaling</dd>
 		<dd>NoSQL (for specific needs)</dd>
 		<dd>Full-text search: Django Haystack, Solr, ElasticSearch</dd>
 		<dd>Message-oriented architecture, Django Channels</dd>
-		<dd>Mobile hybrid apps (PhoneGap / Cordova, react native)</dd>
+		<dd>Mobile hybrid apps (PhoneGap / Cordova, React Native)</dd>
 		<dd>Python debugger</dd>
 		<dd>Javascript debugger</dd>
 		<dd>OpenCV, face and content recognition, machine learning</dd>
 		<dd>MPEG DASH, DRM (CDM)</dd>
 		<dd>pytest / nose</dd>
-		<dd>AWS containers, AWS auto-scaling</dd>
 		<dd>High availability deployments</dd>
-		<dd>Docker swarm</dd>
-		<dd>Time series storage and visualization (grafana, influxdb, graphite)</dd>
-		<dd>Logging (sentry)</dd>
+		<dd>Docker Swarm</dd>
+		<dd>Time series storage and visualization (Grafana, Influxdb, Graphite)</dd>
+		<dd>Logging (Sentry)</dd>
 		<dd>Django Pluggable apps</dd>
 		<dd>Scalable apps</dd>
 		<dd>Pika (simple RabbitMQ client)</dd>
@@ -457,7 +509,7 @@ OSX
 		<dd>Web crawling / scraping</dd>
 		<dd>Sybase</dd>
 		<dd>Redmine, Trac, Bugzilla</dd>
-		<dd>SQL alchemy</dd>
+		<dd>SQL Alchemy</dd>
 		<dd>OpenStack</dd>
 	</dl>
 
@@ -492,7 +544,7 @@ OSX
 	<ul>
 		<li>Estimated and designed new features, their architecture</li>
 		<li>Implemented new features (IP to location, browser and device recognition, metalink, payments w/PayPal, mass downloader, callbacks system, metadata search, multi-language fields, submission form, JWPlayer 6 and HTML5 playout, HTML5 upload to S3, many new APIs via TastyPie)</li>
-		<li>Upgraded frameworks (Django, tastypie, testing; patched Django against crashes)</li>
+		<li>Upgraded frameworks (Django, Tastypie, testing; patched Django against crashes)</li>
 		<li>Implemented several prototypes (AWS S3 files ownership and cleanup, h265 playout, playout from different CDNs, Akamai transcoding + authorised DASH playout, Django REST Framework + fat client, jsstats gathering + reports + dashboard)</li>
 		<li>Optimised performance (better uwsgi usage, faster pages and APIs — SQL + Python, faster tests)</li>
 		<li>Updated related products (bugs Uploader @ Java, bugs in JWPlayer 5 @ SWF ActionScript, custom overlay for JWPlayer 6 @ SWF ActionScript)</li>
@@ -501,13 +553,13 @@ OSX
 
 	<h4>PicturePipe Encoder<span>, 2012 — now </span></h4>
 	<p class="description">Video transcoding backend for PicturePipe </p>
-	<p class="technologies">AWS EC2, Python, Celery + RabbitMQ, ffmpeg, DVD tools, boto + AWS S3, awscli + AWS S3</p>
+	<p class="technologies">AWS EC2, Python, Celery + RabbitMQ, ffmpeg, DVD tools, Boto + AWS S3, awscli + AWS S3</p>
 	<ul>
 		<li>Re-designed and implemented new usage scenario (AWS EC2 + systemd + Docker + Celery@RabbitMQ + Python, packer.io)</li>
 		<li>Implemented workers check and automatic re-scaling (AWS EC2)</li>
 		<li>Upgraded core libraries (ffmbc => ffmpeg, ffprobe for metadata, migrated to latest ffmpeg)</li>
 		<li>Built core libraries ourselves (ffmpeg, x264, openh264, x265, vpx, faac, FDK; make, configure, checkinstall; static linking)</li>
-		<li>Optimised performance and storage requirements (awscli for upload and download, extract metadata from remote files, celery + RabbitMQ, task cancelling, avoid download if possible, direct transfer from bucket to bucket, delete originals on success)</li>
+		<li>Optimised performance and storage requirements (awscli for upload and download, extract metadata from remote files, Celery + RabbitMQ, task cancelling, avoid download if possible, direct transfer from bucket to bucket, delete originals on success)</li>
 		<li>Improved application (files hashing, single log for encoding task, better binaries execution, metadata extraction, thumbnail generation, precise progress calculation, better ffmpeg log parsing for progress, moved much logic and settings to publisher)</li>
 		<li>Developed new features (DCP recognition + thumbnail / metadata extraction, new codecs, download source from external URL - wget/curl/aria2c/axel + AES asymmetric credentials encryption)</li>
 		<li>Fixed bugs (better overlays, support unicode)</li>
@@ -549,7 +601,7 @@ OSX
 
 	<h4>Opera Leipzig<span>, 2016 </span></h4>
 	<p class="description">Videotheque for opera </p>
-	<p class="technologies">Python + Django, boto3 + AWS S3 (+ events + uploader), AWS ElasticTranscode, AWS Lambda, AWS SQS</p>
+	<p class="technologies">Python + Django, Boto3 + AWS S3 (+ events + uploader), AWS ElasticTranscode, AWS Lambda, AWS SQS</p>
 	<ul>
 		<li>Estimated, designed product and architecture (Python, AWS S3 + events + AWS SQS + AWS ElasticTranscode)</li>
 		<li>Created skeleton application + structure, data models</li>
@@ -577,7 +629,7 @@ OSX
 
 	<h4 class="description">Starmeo<span>, 2011 — 2012 </span></h4>
 	<p class="description">Web application for stars to communicate with their fans </p>
-	<p class="technologies">Python + Django, Javascript (UI tricks), MySQL, boto + AWS S3, Facebook Integration, ffmpeg</p>
+	<p class="technologies">Python + Django, Javascript (UI tricks), MySQL, Boto + AWS S3, Facebook Integration, ffmpeg</p>
 	<ul>
 		<li>Automated deployments, video processing, reduce page size and load time, cloud storage integration, notifications subsystem </li>
 	</ul>
