@@ -12,6 +12,11 @@
 			max-width: 1000px;
 			margin: auto;
 		}
+        footer {
+            color: #CCC;
+            text-align: right;
+            padding: 0.5em;
+        }
 		h1 {
 			margin-left: 2em;
 		}
@@ -36,7 +41,7 @@
 			font-size: 14px;
 		}
 		h4 > span {font-weight: normal;}
-		ul + h4 {margin-top: 1em;}
+		ul + h4, p + h4 {margin-top: 1em;}
 		ul {margin: 3px 0;}
 		div.photo {
 			width: 180px;
@@ -190,6 +195,7 @@ Docker-compose
 docker registry
 Docker Swarm
 ElasticSearch
+Elgg
 ES6
 ES7
 Fabric
@@ -210,6 +216,7 @@ HTML5
 HTTP
 HTTP2
 Invoke
+Jabber
 Java
 Java Applet
 Javascript
@@ -220,6 +227,7 @@ JSON
 JWPlayer
 JWPlayer 5
 JWPlayer 6
+Linux
 make
 Memcached
 MS SQL
@@ -232,7 +240,7 @@ nose
 oAuth
 openh264
 OpenStack
-Orace SQL
+Oracle SQL
 OSX
 packer.io
 PhantomJS
@@ -243,15 +251,17 @@ Piston
 PL/SQL
 PostgreSQL
 PyCharm
+pytest
 Python
 Python 2
 Python 3
-pytest
 RabbitMQ
 React JS
 React Native
 Redis
+regex
 Regular expressions
+Ruby
 Ruby on Rails
 Selenium
 Sentry
@@ -281,6 +291,7 @@ Websockets
 wget
 x264
 x265
+XMPP
 YAML
 	`;
 
@@ -303,7 +314,7 @@ YAML
 	var keywords = keywords.replace(/^\s+|\s+$/g, '').split('\n');
 	// sort by length
 	keywords.sort(function(a, b){return b.length - a.length;});
-	var regexp = RegExp('\\b('+keywords.join('|')+')\\b'.toLowerCase(), 'g');
+	var regexp = RegExp('\\b('+keywords.join('|')+')\\b', 'g');
 
 	document.addEventListener('DOMContentLoaded', function(){
 		document.body.innerHTML = document.body.innerHTML.replace(regexp, function(m, word){
@@ -326,13 +337,16 @@ YAML
 <h1>Artem Skoretskiy, CV</h1>
 
 <section>
-	<h3><span>Baseline</span></h3>
+	<h3><span>Profile</span></h3>
 
 	<div class="photo">PHOTO</div>
 
 	<dl>
 		<dt>Keywords</dt>
 		<dd>Web, Python, Django, SQL, Docker, Debian, Ubuntu, OSX, bash, AWS S3, AWS S3, AWS CloudFront, build, ffmpeg</dd>
+
+		<dt>Roles</dt>
+		<dd>Senior web [software] developer, technical / team lead, business analyst</dd>
 
 		<dt>Language</dt>
 		<dd>English (fluent, IELTS 6.5)</dd>
@@ -354,9 +368,6 @@ YAML
 		<dd>twitter: <a href="http://twitter.com/askoretskiy">@askoretskiy</a></dd>
 	</dl>
 	<dl>
-		<dt>Positions taken</dt>
-		<dd>Web [software] developer, senior developer, technical lead,	team lead, business analyst</dd>
-
 		<dt>Milestones</dt>
 		<dd>2012 — moved to Germany</dd>
 		<dd>2005 — first foreign customer (USA)</dd>
@@ -378,12 +389,13 @@ YAML
 		<dd>Design architecture and structure of application, evaluate data storage options and design data structures</dd>
         <dd class="strong"><span>Develop web applications using Python and Django</span></dd>
 		<dd>Add extra logic to client using Javascript</dd>
-		<dd>Pack application into [set of] Docker containers, use them for development and testing</dd>
+        <dd class="strong"><span>Pack application into [set of] Docker containers, use them for development and testing</span></dd>
 		<dd>Integrate with AWS S3, AWS EC2, AWS CloudFront</dd>
 		<dd>Tune Python / Django and SQL code performance for specific workloads</dd>
 		<dd>Use Debian / Alpine for containers, Debian for servers, OSX and Ubuntu for desktop</dd>
 		<dd>Deploy to production using automated deployment tools</dd>
 		<dd>Use OSS projects and contribute to them (at least bug reports or feature requests, e.g. Firefox, Django, Tastypie, Python)</dd>
+        <dd>Develop pet projects at spare time, publish some as OSS</dd>
 	</dl>
 </section>
 
@@ -392,16 +404,16 @@ YAML
 
 	<dl class="sentense technologies">
 		<dt>I build products using</dt>
-		<dd>Docker, private docker registry, Docker-compose</dd>
 		<dd class="strong"><span>Python 3, Python 2, Django</span></dd>
 		<dd class="strong"><span>SQL, PostgreSQL, MySQL, SQLite RDMBS</span></dd>
 		<dd>Javascript (no framework), prototype inheritance, HTML5 upload, files handling</dd>
 		<dd>HTML5, CSS3 (baseline)</dd>
-		<dd>flotcharts</dd>
 		<dd>HTML5 VIDEO tag, JWPlayer, video.js, DASH player</dd>
+		<dd class="strong"><span>Docker, private docker registry, Docker-compose</span></dd>
 		<dd>Boto, AWS CLI, packer.io, AWS S3, AWS CloudFront, AWS EC2, scaling</dd>
 		<dd>Fabric, bash, ssh</dd>
 		<dd>Pillow</dd>
+		<dd>flotcharts</dd>
 		<dd>ffmpeg, x264, x265</dd>
 		<dd>tox, unittest, Selenium with Firefox / PhantomJS</dd>
 		<dd>Tastypie</dd>
@@ -530,16 +542,8 @@ YAML
 <section>
 	<h3><span>Current projects</span></h3>
 
-	<h4>DblExplorer<span>, 2016 — now </span></h4>
-	<p class="description">Catalog of engines, advanced search </p>
-	<p class="technologies">Python + Django, PostgreSQL</p>
-	<ul>
-	<li>Estimated, planned project</li>
-	<li>Developing extra features for existing app</li>
-	</ul>
-
 	<h4>PicturePipe<span>, 2012 — now</span></h4>
-	<p class="description"> Platform for VoD products </p>
+	<p class="description">Platform for VoD products</p>
 	<p class="technologies">Python + Django, Javascript, eventually ActionScript and Java Applet</p>
 	<ul>
 		<li>Estimated and designed new features, their architecture</li>
@@ -551,8 +555,8 @@ YAML
 		<li>Migrated from Piston to Tastypie</li>
 	</ul>
 
-	<h4>PicturePipe Encoder<span>, 2012 — now </span></h4>
-	<p class="description">Video transcoding backend for PicturePipe </p>
+	<h4>PicturePipe Encoder<span>, 2012 — now</span></h4>
+	<p class="description">Video transcoding backend for PicturePipe</p>
 	<p class="technologies">AWS EC2, Python, Celery + RabbitMQ, ffmpeg, DVD tools, Boto + AWS S3, awscli + AWS S3</p>
 	<ul>
 		<li>Re-designed and implemented new usage scenario (AWS EC2 + systemd + Docker + Celery@RabbitMQ + Python, packer.io)</li>
@@ -565,8 +569,8 @@ YAML
 		<li>Fixed bugs (better overlays, support unicode)</li>
 	</ul>
 
-	<h4>Prequel<span>, 2012 — now </span></h4>
-	<p class="description">Videotheque + submission platform </p>
+	<h4>Prequel<span>, 2012 — now</span></h4>
+	<p class="description">Videotheque + submission platform</p>
 	<p class="technologies">Python + Django</p>
 	<ul>
 		<li>Designed product and architecture (Django, thin client for PicturePipe, persistent data caching in Redis)</li>
@@ -574,7 +578,7 @@ YAML
 		<li>Developed many core features (total 2 devs, data mapping, data sync, metadata search, also inside JSON, Ooyala and NOVA integration, geo-blocking, reports generation, voting)</li>
 	</ul>
 
-	<h4>Client PC<span>, 2013 — now </span></h4>
+	<h4>Client PC<span>, 2013 — now</span></h4>
 	<p class="description">Client PC machine to work with event videotheque</p>
 	<ul>
 		<li>Made web kiosk machine (Firefox / Chrome, Ubuntu, custom session, tearing-free, windows decoration, dd)</li>
@@ -584,23 +588,31 @@ YAML
 <section>
 	<h3><span>Recent projects</span></h3>
 
-	<h4>Salt and Pepper<span>, 2016 </span></h4>
-	<p class="description">Web application for events management </p>
+	<h4>DblExplorer<span>, 2016</span></h4>
+	<p class="description">Catalog of engines, advanced search</p>
+	<p class="technologies">Python + Django, PostgreSQL</p>
+	<ul>
+	<li>Estimated, planned project</li>
+	<li>Developing extra features for existing app</li>
+	</ul>
+
+	<h4>Salt and Pepper<span>, 2016</span></h4>
+	<p class="description">Web application for events management</p>
 	<p class="technologies">Python + Django, PostgreSQL</p>
 	<ul>
 		<li>Upgraded (Django, testing)</li>
 	</ul>
 
 	<h4>BüroVerhaltung<span>, 2016</span></h4>
-	<p class="description"> Web application for managing shared office tasks </p>
+	<p class="description">Web application for managing shared office tasks</p>
 	<p class="technologies">Python + Django</p>
 	<ul>
 		<li>Upgraded (Python 3, Django, testing)</li>
 		<li>Reviewed, cleaned up the code</li>
 	</ul>
 
-	<h4>Opera Leipzig<span>, 2016 </span></h4>
-	<p class="description">Videotheque for opera </p>
+	<h4>Opera Leipzig<span>, 2016</span></h4>
+	<p class="description">Videotheque for opera</p>
 	<p class="technologies">Python + Django, Boto3 + AWS S3 (+ events + uploader), AWS ElasticTranscode, AWS Lambda, AWS SQS</p>
 	<ul>
 		<li>Estimated, designed product and architecture (Python, AWS S3 + events + AWS SQS + AWS ElasticTranscode)</li>
@@ -608,53 +620,167 @@ YAML
 	</ul>
 
 	<h4>gSales connector<span>, 2015</span></h4>
-	<p class="description"> Web application to generate invoices out of Jira logged hours </p>
+	<p class="description">Web application to generate invoices out of Jira logged hours</p>
 	<p class="technologies">Python + Flask, Jira XML RPC, TEMPO XML RPC, gSales API</p>
 	<ul>
 		<li>Fixed bugs, updated and extended existing app (UI and features)</li>
 	</ul>
 
-	<h4>App Archive<span>, 2014 — 2015 </span></h4>
-	<p class="description">Portfolio of actual implemented web applications </p>
+	<h4>App Archive<span>, 2014 — 2015</span></h4>
+	<p class="description">Portfolio of actual implemented web applications</p>
 	<p class="technologies">Python + Django, Docker, different apps inside containers</p>
 	<ul>
 		<li>Designed product and architecture (dashboard + multiple containers)</li>
 		<li>Created core application (dashboard, single entry point, links)</li>
 		<li>Packed several apps, designed storage structure (code, data, settings)</li>
 	</ul>
+
+	<h4 class="description">Starmeo<span>, 2011 — 2012</span></h4>
+	<p class="description">Web application for stars to communicate with their fans</p>
+	<p class="technologies">Python + Django, Javascript (UI tricks), MySQL, Boto + AWS S3, Facebook Integration, ffmpeg</p>
+	<ul>
+		<li>Automated deployments, video processing, reduce page size and load time, cloud storage integration, notifications subsystem</li>
+	</ul>
+
+	<h4>Syndicate<span>, 2011</span></h4>
+	<p class="description">Web application for managing marketing campaigns</p>
+	<p class="technologies">Javascript (fat client), node.js (permissions proxy), CouchDB; Python + Django, MySQL</p>
+	<ul>
+		<li>Fat client concept, NoSQL storage, server-side Javascript</li>
+	</ul>
+
+	<h4>DeinDeal<span>, 2010 — 2011</span></h4>
+	<p class="description">Analogue of Groupon</p>
+	<p class="technologies">Python + Django, MySQL, Celery + RabbitMQ, Fabric</p>
+	<ul>
+		<li>Race conditions, payments, intense load, performance optimizations</li>
+	</ul>
+
+	<h4>Twangoo<span>, 2010</span></h4>
+	<p class="description">Analogue of Groupon</p>
+	<p class="technologies">Python + Django, Celery + RabbitMQ, memcached, nginx + uwsgi, YAML, Fabric</p>
+	<ul>
+		<li>Develop from scratch, deploying Django, multi-tenant application, race conditions, payments, automated deployments</li>
+	</ul>
+
 </section>
 
 <section>
 	<h3><span>Past projects</span></h3>
 
-	<h4 class="description">Starmeo<span>, 2011 — 2012 </span></h4>
-	<p class="description">Web application for stars to communicate with their fans </p>
-	<p class="technologies">Python + Django, Javascript (UI tricks), MySQL, Boto + AWS S3, Facebook Integration, ffmpeg</p>
+	<h4>CMJ<span>, 2010</span></h4>
+	<p class="description">Web platform for music events and publishing companies</p>
+	<p class="technologies">Ruby on Rails, MySQL, Sybase, Solr</p>
 	<ul>
-		<li>Automated deployments, video processing, reduce page size and load time, cloud storage integration, notifications subsystem </li>
+		<li>Porting to newer version of framework, background tasks, full-text search, legacy RDBMS</li>
 	</ul>
 
-	<h4>Syndicate<span>,  2011</span></h4>
-	<p class="description">Web application for managing marketing campaigns </p>
-	<p class="technologies">Javascript (fat client), node.js (permissions proxy), CouchDB; Python + Django, MySQL</p>
+	<h4>ImmersionCast<span>, 2009 — 2010</span></h4>
+	<p class="description">VoD platform for video game guides</p>
+	<p class="technologies">Ruby on Rails, MySQL, Apache / nginx</p>
 	<ul>
-		<li>Fat client concept, NoSQL storage, server-side Javascript </li>
+		<li>Single developer + from scratch, deploying Ruby on Rails, video processing, video playout + pseudo-streaming, authorized download acceleration</li>
 	</ul>
 
-	<h4>DeinDeal<span>,  2010 — 2011 </span></h4>
-	<p class="description">Analogue of Groupon </p>
-	<p class="technologies">Python + Django, MySQL, Celery + RabbitMQ, Fabric</p>
+	<h4>Pollpigeon<span>, 2009</span></h4>
+	<p class="description">Polls on twitter</p>
+	<p class="technologies">Python + Django, Javascript, MySQL</p>
 	<ul>
-		<li>Race conditions, payments, intense load, performance optimizations </li>
+		<li>Charts in Javascript</li>
 	</ul>
 
-	<h4>Twangoo<span>,  2010</span></h4>
-	<p class="description">Analogue of Groupon </p>
-	<p class="technologies">Python + Django, Celery + RabbitMQ, memcached, nginx + uwsgi, YAML, Fabric</p>
+	<h4>ichat<span>, 2009</span></h4>
+	<p class="description">Web client for Jabber (XMPP)</p>
+	<p class="technologies">Javascript (fat client), Python, HTML5, CSS, XMPP + XEPs, HTTP tricks</p>
 	<ul>
-		<li>Develop from scratch, deploying Django, multi-tenant application, race conditions, payments, automated deployments </li>
+		<li>Fat client concept, Python daemon, Jabber protocol + extensions, Javascript cross-origin, cross-frame and cross-window communication, push data to Javascript</li>
+	</ul>
+
+	<h4>CurseCounter<span>, 2009</span></h4>
+	<p class="description">Hybrid mobile app for liking / disliking places</p>
+	<p class="technologies">Ruby on Rails, Javascript, Facebook integration</p>
+	<ul>
+		<li>Put an overlay on map, generating tiled overlays</li>
+	</ul>
+
+	<h4>TechDrifters<span>, 2009</span></h4>
+	<p class="description">Web social network for IT entrepreneurs and freelancers</p>
+	<p class="technologies">PHP + Elgg (OSS social network engine)</p>
+	<ul>
+		<li>Writing Elgg modules, Google map integration</li>
+	</ul>
+
+	<h4>Trivia<span>, 2009</span></h4>
+	<p class="description">Hybrid mobile app for taking quizzes (time-limited)</p>
+	<p class="technologies">Ruby on Rails, Javascript (UI + logic)</p>
+	<ul>
+		<li>Writing hybrid web apps, client origin verification (that official client is used), client results validation (time counter is genuine)</li>
+	</ul>
+
+	<h4>SWIX<span>, 2008 — 2009</span></h4>
+	<p class="description">Web application for monitoring online marketing campaigns</p>
+	<p class="technologies">Python + Django, Javascript (UI widgets)</p>
+	<ul>
+		<li>Data gathering and storage, dashboard and widgets</li>
+	</ul>
+
+	<h4>ServiceMerchant<span>, 2008</span></h4>
+	<p class="description">OSS toolkit for recurring payments and subscription management (gem for Ruby on Rails)</p>
+	<p class="technologies">Ruby, Ruby on Rails</p>
+	<ul>
+		<li>Payments, gem packaging, integration testing (mocks)</li>
+	</ul>
+
+	<h4>Credit Reports<span>, 2008</span></h4>
+	<p class="description">Web application to generate and sell credit reports</p>
+	<p class="technologies">Ruby on Rails</p>
+	<ul>
+		<li>Credit reports domain, parsing legacy credit reports</li>
+	</ul>
+
+	<h4>Planner<span>, 2008</span></h4>
+	<p class="description">Web application to monitor web crawling</p>
+	<p class="technologies">Ruby on Rails</p>
+
+	<h4>Webminer<span>, 2006 — 2008</span></h4>
+	<p class="description">Real estate websites crawler (scraping)</p>
+	<p class="technologies">Python, regex (regular expressions), wget, HTTP tricks</p>
+	<ul>
+		<li>Writing CLI applications, data crawling / scraping, data processing pipeline, regular expressions</li>
+	</ul>
+
+	<h4>CAS<span>, 2005 — 2006</span></h4>
+	<p class="description">Multi-factor authentication for online banking</p>
+	<p class="technologies">ASP + JScript, ASP.NET + C#, MS SQL, T-SQL, Selenium + Python</p>
+	<ul>
+		<li>Browser fingerprint domain, data mining (calculating possibility of fraud), porting from ASP JScript to ASP.NET C#</li>
+	</ul>
+
+	<h4>ModEUS<span>, 2003 — 2005</span></h4>
+	<p class="description">ERP system for higher education</p>
+	<p class="technologies">Only business analysis, no development</p>
+	<ul>
+		<li>Higher education domain, individual study plans generation</li>
+	</ul>
+
+	<h4>TAU-Master<span>, 2000 — 2005</span></h4>
+	<p class="description">Web application to access educational information of academy ERP system</p>
+	<p class="technologies">PHP + own framework, HTML, Oracle SQL, PL/SQL, Apache, Linux</p>
+	<ul>
+		<li>Design complex and extensible web application, write own MVC-like framework, complex data structure and logic, higher education domain, online learning domain</li>
+	</ul>
+
+	<h4>Online accounting course<span>, 2000</span></h4>
+	<p class="description">Pilot of checking accounting skills online</p>
+	<p class="technologies">PHP, HTML, Oracle SQL</p>
+	<ul>
+		<li>Online learning domain, accounting domain, checking unstructured results</li>
 	</ul>
 </section>
+
+<footer>
+    &copy; 2016 Artem Skoretskiy
+</footer>
 
 </body>
 </html>
