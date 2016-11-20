@@ -21,20 +21,34 @@
 			margin-left: 2em;
 		}
 		h3 {
+			position: sticky;
+            top: 5px;
+            display: inline-block;
+            padding: 0;
+            margin: 0 0 0 -2em;
+            float: left;
+            width: 1.5em;
+            line-height: 1.5em;
 			font-size: 24px;
 			text-transform: uppercase;
 			color: #CCC;
-			margin: 0;
-			padding: 0;
-			transform: rotate(90deg);
-			transform-origin: left top;
-			position: absolute;
-			left: 1em;
 		}
 		h3 > span {
-			display: inline-block;
-			transform: rotate(-180deg);
+            display: inline-block;
+            overflow: hidden;
 		}
+		h3 > span > span {
+            display: inline-block;
+            white-space: nowrap;
+
+            transform: translate(0,100%) rotate(-90deg);
+            transform-origin: 0 0;
+		}
+		h3 > span > span:after {
+            content: "";
+            float: left;
+            margin-top: 100%;
+        }
 		h4 {
 			margin: 0 0 3px 0;
 			font-weight: bold;
@@ -337,7 +351,7 @@ YAML
 <h1>Artem Skoretskiy, CV</h1>
 
 <section>
-	<h3><span>Profile</span></h3>
+	<h3><span><span>Profile</span></span></h3>
 
 	<div class="photo">PHOTO</div>
 
@@ -379,7 +393,7 @@ YAML
 </section>
 
 <section>
-	<h3><span>About</span></h3>
+	<h3><span><span>About</span></span></h3>
 
 	<p>My passion is about full cycle of <span class="strong">web applications development</span> — from idea to running application [on production server].</p>
 
@@ -401,7 +415,7 @@ YAML
 </section>
 
 <section>
-	<h3><span>Today</span></h3>
+	<h3><span><span>Today</span></span></h3>
 
 	<dl class="sentense technologies">
 		<dt>I build products using</dt>
@@ -451,7 +465,7 @@ YAML
 </section>
 
 <section>
-	<h3><span>Tomorrow</span></h3>
+	<h3><span><span>Tomorrow</span></span></h3>
 
 	<dl class="sentense">
 		<dt>I am looking forward to use [in production]</dt>
@@ -501,7 +515,7 @@ YAML
 </section>
 
 <section>
-	<h3><span>Yesterday</span></h3>
+	<h3><span><span>Yesterday</span></span></h3>
 
 	<dl class="sentense technologies">
 		<dt>I was builing products with</dt>
@@ -541,7 +555,7 @@ YAML
 </section>
 
 <section>
-	<h3><span>Current projects</span></h3>
+    <h3><span><span>Current projects</span></span></h3>
 
 	<h4>PicturePipe<span>, 2012 — now</span></h4>
 	<p class="description">Platform for VoD products</p>
@@ -587,7 +601,7 @@ YAML
 </section>
 
 <section>
-	<h3><span>Recent projects</span></h3>
+    <h3><span><span>Recent projects</span></span></h3>
 
 	<h4>DblExplorer<span>, 2016</span></h4>
 	<p class="description">Catalog of engines, advanced search</p>
@@ -667,7 +681,7 @@ YAML
 </section>
 
 <section>
-	<h3><span>Past projects</span></h3>
+    <h3><span><span>Past projects</span></span></h3>
 
 	<h4>CMJ<span>, 2010</span></h4>
 	<p class="description">Web platform for music events and publishing companies</p>
